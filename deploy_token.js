@@ -4,7 +4,7 @@ var crypto = require('crypto');
 require('dotenv').config();
 const secureRandom = require("secure-random");
 const { EnigmaUtils, Secp256k1Pen, SigningCosmWasmClient, pubkeyToAddress, encodeSecp256k1Pubkey } = require("secretjs");
-const setEnv = require("./setEnv");
+const setEnv = require("./utils/setEnv");
 
 const customFees = {
     upload: {

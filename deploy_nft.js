@@ -6,7 +6,7 @@ const {
     EnigmaUtils, Secp256k1Pen, SigningCosmWasmClient, pubkeyToAddress, encodeSecp256k1Pubkey
   } = require("secretjs");
 const secureRandom = require("secure-random");
-const setEnv = require("./setEnv");
+const setEnv = require("./utils/setEnv");
 
 const customFees = {
     upload: {
@@ -53,7 +53,7 @@ const initMsg = {
         unwrapped_metadata_is_private: true,
         minter_may_update_metadata: false,
         owner_may_update_metadata: false,
-        enable_burn: false
+        enable_burn: true
     }
 };
 
@@ -73,7 +73,7 @@ const main = async () => {
     console.log(`Wallet address: ${accAddress}`)
 
     // Upload the wasm of the random minting SNIP721
-    const wasm = fs.readFileSync("contracts/snip721-random-mint.wasm");
+    const wasm = fs.readFileSync("contracts/latest-snip721-random-mint.wasm");
     console.log('Uploading wasm...')
     const uploadReceipt = await client.upload(wasm, {});
 

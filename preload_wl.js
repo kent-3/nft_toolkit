@@ -26,8 +26,8 @@ function isValidAddress(address) {
 }
 
 function csvJSONWL(csv){
-    //console.log(csv)
-    var lines=csv.split("\r\n");
+    // console.log(csv)
+    var lines=csv.split("\n");
     var result = [];
   
     // NOTE: If your columns contain commas in their values, you'll need
@@ -36,7 +36,6 @@ function csvJSONWL(csv){
     // jsfiddle showing the issue https://jsfiddle.net/
     var headers=lines[0].split(",");
     for(var i=1;i<lines.length;i++){
-        
         var obj = {};
         var currentline=lines[i].split(",");
         
@@ -53,13 +52,13 @@ function csvJSONWL(csv){
             }
         }
     }
-  
     return result; //JavaScript object
     //return JSON.stringify(result); //JSON
 }
 
 const wlData = fs.readFileSync('data/whitelist.csv', 'utf8');
 const wlAry = csvJSONWL(wlData);
+console.log(wlAry)
 console.log("Whitelist Address: ", wlAry.length)
 
 //empty pre-load handle message
